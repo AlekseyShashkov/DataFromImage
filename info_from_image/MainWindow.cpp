@@ -17,7 +17,7 @@
 //
 // COMMENTS: no.
 //
-int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                    LPSTR lpCmdLine, int nCmdShow)
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
@@ -26,10 +26,9 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
     const WCHAR *szWindowClass = TEXT("MainWindow");
     const WCHAR *szWindowTitle = TEXT("");            
 
-    HINSTANCE hInstance;
     HWND hWnd;                
 
-    if (!::RegClassEx(hInst, szWindowClass))
+    if (!::RegClassEx(hInstance, szWindowClass))
     {
         ::MessageBox(NULL,
             TEXT("Failed to register class!"),
@@ -39,9 +38,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
         return NULL;
     }
 
-    hInstance = hInst;
-
-    hWnd = CreateWnd(hInst, szWindowClass, szWindowTitle);
+    hWnd = CreateWnd(hInstance, szWindowClass, szWindowTitle);
 
     if (!hWnd)
     {
@@ -86,7 +83,7 @@ ATOM RegClassEx(HINSTANCE hInstance, const WCHAR *szWindowClass)
     wcex.hInstance     = hInstance;
     wcex.hIcon         = 0; 
     wcex.hCursor       = ::LoadCursor(NULL, IDC_ARROW);
-    wcex.hbrBackground = ::CreateSolidBrush(RGB(24, 29, 48)); // 142, 180, 189
+    wcex.hbrBackground = ::CreateSolidBrush(RGB(27, 29, 46));
     wcex.lpszMenuName  = NULL; 
     wcex.lpszClassName = szWindowClass; 
     wcex.hIconSm       = 0; 

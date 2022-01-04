@@ -13,10 +13,28 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Заголовочные файлы\GUI">
+      <UniqueIdentifier>{88bbb217-52db-480a-939c-2cb015c16cf6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы исходного кода\GUI">
+      <UniqueIdentifier>{f99d66bb-c949-4ad6-8b4f-b31c7821bc51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainWindow.h">
       <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\GUI.h">
+      <Filter>Заголовочные файлы\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Toolbar.h">
+      <Filter>Заголовочные файлы\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\ElementGUI.h">
+      <Filter>Заголовочные файлы\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Image.h">
+      <Filter>Заголовочные файлы\GUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -25,6 +43,18 @@
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\GUI.cpp">
+      <Filter>Файлы исходного кода\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\ElementGUI.cpp">
+      <Filter>Файлы исходного кода\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\Toolbar.cpp">
+      <Filter>Файлы исходного кода\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\Image.cpp">
+      <Filter>Файлы исходного кода\GUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
