@@ -8,8 +8,9 @@ public:
     Toolbar(const HWND &_hWnd);
     ~Toolbar() noexcept;
 
-    void CreatePanel(const HWND &_hWnd) override final;
-
+// Overrides.
+public:
+    void ProcessingData(BitmapPtr _image) override final;
     POINT GetPositionPanel() const noexcept override final;
 
 private:

@@ -38,7 +38,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_COMMAND:
         switch (LOWORD(wParam)) {
-            case (size_t)Controllers::ID_BUTTON_LOADFILE: 
+            case (unsigned)Controllers::ID_BUTTON_LOADFILE: 
                 OPENFILENAME ofn;
                 wchar_t szDirect[MAX_PATH] = {};
                 wchar_t szFileName[MAX_PATH] = {};
@@ -58,7 +58,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST | OFN_EXPLORER;
 
                 if (::GetOpenFileName(&ofn) == TRUE) {
+                    gui->TakeImage(std::make_shared<Gdiplus::Bitmap>(ofn.lpstrFile));
 
+                    ::InvalidateRect(hWnd, NULL, FALSE);
+                    ::UpdateWindow(hWnd);
                 }
                 break;
         }

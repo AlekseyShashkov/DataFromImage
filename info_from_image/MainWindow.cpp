@@ -23,6 +23,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
+    ::Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+    ULONG_PTR gdiplusToken;
+    ::Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
+
     const WCHAR *szWindowClass = TEXT("MainWindow");
     const WCHAR *szWindowTitle = TEXT("");            
 
@@ -61,6 +65,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
         ::DispatchMessage(&msg);
     }
 
+    ::Gdiplus::GdiplusShutdown(gdiplusToken);
     return (int)msg.wParam;
 }
 

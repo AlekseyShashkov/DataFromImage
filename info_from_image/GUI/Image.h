@@ -8,10 +8,14 @@ public:
     Image(const HWND &_hWnd);
     ~Image() noexcept;
 
-    void CreatePanel(const HWND &_hWnd) override final;
-
+// Overrides.
+public:
+    void ProcessingData(BitmapPtr _image) override final;
     POINT GetPositionPanel() const noexcept override final;
 
 private:
+    void DrawImage(BitmapPtr _image, const float _ratio);
 
+private:
+    RECT m_imageRect;
 };

@@ -2,7 +2,7 @@
 
 #include "ElementGUI.h"
 #include <windows.h>
-#include <list>
+#include <gdiplus.h>
 #include <memory>
 #include <vector>
 
@@ -17,6 +17,7 @@ public:
 
     void AddElement(const HWND &_hWnd, ElementGUIPtr _elementGUIPtr) noexcept;
     void DrawElements(HDC &_hDC, const HWND &_hWnd) noexcept;
+    void TakeImage(BitmapPtr _image) noexcept;
 
 private:
     ListGUIElements m_listGUIElements;

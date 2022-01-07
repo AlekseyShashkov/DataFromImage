@@ -5,11 +5,12 @@ Toolbar::Toolbar(const HWND &_hWnd)
     RECT lv_rect{};
     ::GetClientRect(_hWnd, &lv_rect);
 
+    // Panel position.
     m_positionPanel = { 0, 0 };
 
-    // Dimensions.
+    // Panel dimensions.
     const long lv_width = static_cast<long>(lv_rect.right * 0.1);
-    const long lv_height = static_cast<long>(lv_rect.bottom);
+    const long lv_height = lv_rect.bottom;
 
     // Create panel.
     HDC lv_hDC = ::GetDC(_hWnd);
@@ -30,8 +31,11 @@ Toolbar::Toolbar(const HWND &_hWnd)
         NULL, WS_CHILD | WS_VISIBLE | BS_BITMAP ,
         30, 30, 40, 40, _hWnd, (HMENU)Controllers::ID_BUTTON_LOADFILE,
         lv_hInstance, NULL);
-    m_logoLoadFileButton = (HBITMAP)::LoadImage(nullptr, L"download.bmp", IMAGE_BITMAP, 40, 40, LR_LOADFROMFILE);
-    ::SendMessage(m_loadFileButton, BM_SETIMAGE, IMAGE_BITMAP, (LPARAM)m_logoLoadFileButton);
+    m_logoLoadFileButton = (HBITMAP)::LoadImage(nullptr,
+        L"download.bmp", IMAGE_BITMAP, 40, 40, LR_LOADFROMFILE);
+    ::SendMessage(m_loadFileButton, BM_SETIMAGE, IMAGE_BITMAP,
+        (LPARAM)m_logoLoadFileButton);
+    ::DeleteObject(m_logoLoadFileButton);
 }
 
 Toolbar::~Toolbar() noexcept
@@ -40,12 +44,12 @@ Toolbar::~Toolbar() noexcept
     ::DeleteObject(m_logoLoadFileButton);
 }
 
+void Toolbar::ProcessingData(BitmapPtr _image)
+{
+
+}
+
 POINT Toolbar::GetPositionPanel() const noexcept
 {
     return m_positionPanel;
-}
-
-void Toolbar::CreatePanel(const HWND &_hWnd)
-{
-
 }

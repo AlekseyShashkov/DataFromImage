@@ -26,3 +26,12 @@ void GUI::DrawElements(HDC &_hDC, const HWND &_hWnd) noexcept
         }
     }
 }
+
+void GUI::TakeImage(BitmapPtr _image) noexcept
+{
+    if (!m_listGUIElements.empty()) {
+        for (auto &i : m_listGUIElements) {
+            i->ProcessingData(_image);
+        }
+    }
+}
