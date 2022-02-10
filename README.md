@@ -14,3 +14,5 @@
                        |___/
 # Retrieve data from image C++
 :memo:Retrieve data from image
+
+![Screenshot](https://user-images.githubusercontent.com/17510024/153333114-16861bd1-27c2-4374-a01d-02215ace4175.png)
