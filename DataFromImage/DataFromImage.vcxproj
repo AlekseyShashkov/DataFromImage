@@ -20,8 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F6C60267-0D53-4CD4-B0E7-305C560187D3}</ProjectGuid>
-    <RootNamespace>info_from_image</RootNamespace>
+    <RootNamespace>DataFromImage</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>DataFromImage</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -110,14 +111,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="GUI\ElementGUI.h" />
+    <ClInclude Include="GUI\ColorData.h" />
+    <ClInclude Include="GUI\GUIElement.h" />
     <ClInclude Include="GUI\GUI.h" />
     <ClInclude Include="GUI\Image.h" />
     <ClInclude Include="GUI\Toolbar.h" />
     <ClInclude Include="MainWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GUI\ElementGUI.cpp" />
+    <ClCompile Include="GUI\ColorData.cpp" />
+    <ClCompile Include="GUI\GUIElement.cpp" />
     <ClCompile Include="GUI\GUI.cpp" />
     <ClCompile Include="GUI\Image.cpp" />
     <ClCompile Include="GUI\Toolbar.cpp" />

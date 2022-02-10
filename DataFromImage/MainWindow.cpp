@@ -23,35 +23,42 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
-    ::Gdiplus::GdiplusStartupInput gdiplusStartupInput;
     ULONG_PTR gdiplusToken;
-    ::Gdiplus::GdiplusStartup(&gdiplusToken, &gdiplusStartupInput, NULL);
+    Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+    
+    Gdiplus::Status st = Gdiplus::GdiplusStartup(&gdiplusToken, 
+                                                 &gdiplusStartupInput, 0);
 
-    const WCHAR *szWindowClass = TEXT("MainWindow");
-    const WCHAR *szWindowTitle = TEXT("");            
+    if (st != Gdiplus::Ok) {
+        ::MessageBox(nullptr,
+                     TEXT("Failed to initialize GDI+!"),
+                     TEXT("Error"),
+                     MB_OK);
 
-    HWND hWnd;                
-
-    if (!::RegClassEx(hInstance, szWindowClass))
-    {
-        ::MessageBox(NULL,
-            TEXT("Failed to register class!"),
-            TEXT("Error"),
-            MB_OK);
-
-        return NULL;
+        return 0;
     }
 
-    hWnd = CreateWnd(hInstance, szWindowClass, szWindowTitle);
+    const wchar_t *szWindowClass = TEXT("MainWindow");
+    const wchar_t *szWindowTitle = TEXT("");
 
-    if (!hWnd)
-    {
-        ::MessageBox(NULL,
-            TEXT("Failed to create window!"),
-            TEXT("Error"),
-            MB_OK);
+    if (!::RegClassEx(hInstance, szWindowClass)) {
+        ::MessageBox(nullptr,
+                     TEXT("Failed to register class!"),
+                     TEXT("Error"),
+                     MB_OK);
 
-        return NULL;
+        return 0;
+    }
+
+    HWND hWnd = CreateWnd(hInstance, szWindowClass, szWindowTitle);
+
+    if (!hWnd) {
+        ::MessageBox(nullptr,
+                     TEXT("Failed to create window!"),
+                     TEXT("Error"),
+                     MB_OK);
+
+        return 0;
     }
 
     ::ShowWindow(hWnd, SW_SHOWNORMAL);
@@ -59,14 +66,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
     MSG msg;
     
-    while (::GetMessage(&msg, NULL, 0, 0))
-    {
+    while (::GetMessage(&msg, nullptr, 0, 0)) {
         ::TranslateMessage(&msg);
         ::DispatchMessage(&msg);
     }
 
-    ::Gdiplus::GdiplusShutdown(gdiplusToken);
-    return (int)msg.wParam;
+    Gdiplus::GdiplusShutdown(gdiplusToken);
+
+    return static_cast<int>(msg.wParam);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -87,9 +94,9 @@ ATOM RegClassEx(HINSTANCE hInstance, const WCHAR *szWindowClass)
     wcex.cbWndExtra    = 0; 
     wcex.hInstance     = hInstance;
     wcex.hIcon         = 0; 
-    wcex.hCursor       = ::LoadCursor(NULL, IDC_ARROW);
+    wcex.hCursor       = ::LoadCursor(0, IDC_ARROW);
     wcex.hbrBackground = ::CreateSolidBrush(RGB(27, 29, 46));
-    wcex.lpszMenuName  = NULL; 
+    wcex.lpszMenuName  = 0; 
     wcex.lpszClassName = szWindowClass; 
     wcex.hIconSm       = 0; 
 
@@ -107,23 +114,21 @@ ATOM RegClassEx(HINSTANCE hInstance, const WCHAR *szWindowClass)
 HWND CreateWnd(HINSTANCE hInstance, const WCHAR *szWindowClass,
                const WCHAR *szWindowTitle)
 {
-    int x = static_cast<int>((::GetSystemMetrics(SM_CXSCREEN) 
-        - WINDOW_MAINWINDOW_WIDTH) / 2);
-    int y = static_cast<int>((::GetSystemMetrics(SM_CYSCREEN) 
-        - WINDOW_MAINWINDOW_HEIGHT) / 2);
+    int width  = 1280;
+    int height = 720;
+    int x = (::GetSystemMetrics(SM_CXSCREEN) - width) / 2;     
+    int y = (::GetSystemMetrics(SM_CYSCREEN) - height) / 2;     
 
-    return ::CreateWindowEx(
-        WS_EX_DLGMODALFRAME,
-        szWindowClass,
-        szWindowTitle,
-        WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
-        x,
-        y,
-        WINDOW_MAINWINDOW_WIDTH,
-        WINDOW_MAINWINDOW_HEIGHT,
-        NULL,
-        NULL,
-        hInstance,
-        NULL
-    );
+    return ::CreateWindowEx(WS_EX_DLGMODALFRAME,
+                            szWindowClass,
+                            szWindowTitle,
+                            WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX,
+                            x,
+                            y,
+                            width,
+                            height,
+                            nullptr,
+                            nullptr,
+                            hInstance,
+                            nullptr);
 }

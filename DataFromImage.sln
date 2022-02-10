@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "info_from_image", "info_from_image\info_from_image.vcxproj", "{F6C60267-0D53-4CD4-B0E7-305C560187D3}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DataFromImage", "DataFromImage\DataFromImage.vcxproj", "{F6C60267-0D53-4CD4-B0E7-305C560187D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

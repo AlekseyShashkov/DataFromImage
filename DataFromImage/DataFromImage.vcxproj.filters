@@ -30,10 +30,13 @@
     <ClInclude Include="GUI\Toolbar.h">
       <Filter>Заголовочные файлы\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\ElementGUI.h">
+    <ClInclude Include="GUI\Image.h">
       <Filter>Заголовочные файлы\GUI</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\Image.h">
+    <ClInclude Include="GUI\ColorData.h">
+      <Filter>Заголовочные файлы\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\GUIElement.h">
       <Filter>Заголовочные файлы\GUI</Filter>
     </ClInclude>
   </ItemGroup>
@@ -47,13 +50,16 @@
     <ClCompile Include="GUI\GUI.cpp">
       <Filter>Файлы исходного кода\GUI</Filter>
     </ClCompile>
-    <ClCompile Include="GUI\ElementGUI.cpp">
-      <Filter>Файлы исходного кода\GUI</Filter>
-    </ClCompile>
     <ClCompile Include="GUI\Toolbar.cpp">
       <Filter>Файлы исходного кода\GUI</Filter>
     </ClCompile>
     <ClCompile Include="GUI\Image.cpp">
+      <Filter>Файлы исходного кода\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\ColorData.cpp">
+      <Filter>Файлы исходного кода\GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\GUIElement.cpp">
       <Filter>Файлы исходного кода\GUI</Filter>
     </ClCompile>
   </ItemGroup>

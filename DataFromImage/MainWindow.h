@@ -1,13 +1,15 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
+
+#include <memory>
+
+#include <windows.h>
+#include <gdiplus.h>
+#include <CommCtrl.h>
 
 #include "GUI\GUI.h"
 #include "GUI\Toolbar.h"
 #include "GUI\Image.h"
-#include <windows.h>
-#include <gdiplus.h>
-#include <CommCtrl.h>
-#include <memory>
+#include "GUI\ColorData.h"
 
 #pragma comment(lib, "gdiplus.lib")
 #pragma comment (lib, "comctl32.lib")
@@ -16,12 +18,7 @@
                         version='6.0.0.0' processorArchitecture='*'\
 						publicKeyToken='6595b64144ccf1df' language='*'\"")
 
-#define WINDOW_MAINWINDOW_WIDTH  1280
-#define WINDOW_MAINWINDOW_HEIGHT 720
-
 ATOM RegClassEx(HINSTANCE hInstance, const WCHAR *szWindowClass);
 HWND CreateWnd(HINSTANCE hInstance, const WCHAR *szWindowClass,
-    const WCHAR *szWindowTitle);
+               const WCHAR *szWindowTitle);
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-
-#endif // MAINWINDOW_H
