@@ -13,7 +13,7 @@
                         __/ |
                        |___/
 # Data from image C++
-:memo:Retrieve data from image
+:memo:Retrieve data from image using GDI, GDI+
 
 ![Screenshot1](https://user-images.githubusercontent.com/17510024/153333114-16861bd1-27c2-4374-a01d-02215ace4175.png)
 Original art: https://www.artstation.com/artwork/R33KGX
